@@ -1,23 +1,15 @@
 import Foundation
 
-// Result
-extension Promise {
-    enum Result<ValueType> {
-        case success(ValueType)
-        case failure(Error)
-    }
-}
-
-// Observer callback
-extension Promise {
-    typealias ObserverCallback = (Result<ValueType>) -> Void
-}
-
 class Promise<ValueType> {
     
     // MARK: Value
     
-    private var value: Result<ValueType>? {
+    enum Value<ValueType> {
+        case success(ValueType)
+        case failure(Error)
+    }
+    
+    private var value: Value<ValueType>? {
         didSet {
             guard let v = value else { return }
             observerCallbacks.forEach { (callback) in
@@ -28,9 +20,11 @@ class Promise<ValueType> {
     
     // MARK: Observer callbacks
     
+    typealias ObserverCallback = (Value<ValueType>) -> Void
+    
     private var observerCallbacks = [ObserverCallback]()
     
-    func addObserverCallback(_ callback: @escaping ObserverCallback) {
+    func observer(_ callback: @escaping ObserverCallback) {
         if let v = value { // notify if value is defined
             callback(v)
         } else { // keep observers callback
