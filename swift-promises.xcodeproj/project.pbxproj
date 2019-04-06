@@ -24,6 +24,7 @@
 		1135F1362255330E00ADFC0A /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		1171153F2256871800DF5B20 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		1171154922590EB100DF5B20 /* Promise+Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Promise+Operations.swift"; sourceTree = "<group>"; };
+		1171154B225916E200DF5B20 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +41,7 @@
 		1135F1152255323900ADFC0A = {
 			isa = PBXGroup;
 			children = (
+				1171154B225916E200DF5B20 /* README.md */,
 				1135F1202255323900ADFC0A /* swift-promises */,
 				1135F11F2255323900ADFC0A /* Products */,
 			);
