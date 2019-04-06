@@ -6,12 +6,35 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        promise(async: false).observer { (result) in
-            print("Sync value: \(result)")
-        }
-        
-        promise(async: true).observer { (result) in
-            print("Async value: \(result)")
+        let flow = 3
+        switch flow {
+        case 1:
+            promise(async: false).observe { (value) in
+                print("Value: \(value)")
+            }
+
+        case 2:
+            promise(async: true).observe { (value) in
+                print("Value: \(value)")
+            }
+            
+        case 3:
+            let promise = Promise<Int>()
+            promise
+                .filter { (value) -> Bool in
+                    return value >= 1
+                }
+                .map { (value) -> String in
+                    return "\(value)"
+                }
+                .observe { (value) in
+                    print("Value: \(value)")
+            }
+            promise.succeed(1)
+            promise.succeed(2)
+
+        default:
+            fatalError("Flow is not implemented")
         }
         
         return true

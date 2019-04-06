@@ -24,7 +24,7 @@ class Promise<ValueType> {
     
     private var observerCallbacks = [ObserverCallback]()
     
-    func observer(_ callback: @escaping ObserverCallback) {
+    func observe(_ callback: @escaping ObserverCallback) {
         if let v = value { // notify if value is defined
             callback(v)
         } else { // keep observers callback
@@ -40,5 +40,36 @@ class Promise<ValueType> {
     
     func fail(_ e: Error) {
         value = .failure(e)
+    }
+    
+    // MARK: Chain
+    
+    func chain<NextValueType>(_ closure: @escaping (ValueType) -> Promise<NextValueType>) -> Promise<NextValueType> {
+        let promise = Promise<NextValueType>()
+        
+        observe { (value) in
+            switch value {
+            case let .failure(error):
+                // Redirect error to resulting promise
+                promise.fail(error)
+                
+            case let .success(successValue):
+                // Create intermediate promise (from `closure`)
+                let intermediatePromise = closure(successValue)
+                
+                // observe it
+                intermediatePromise.observe({ (intermediateValue) in
+                    // ...and redirect intermediate value to resulting promise
+                    switch intermediateValue {
+                    case let .failure(intermediateError):
+                        promise.fail(intermediateError)
+                        
+                    case let .success(intermediateSuccessValue):
+                        promise.succeed(intermediateSuccessValue)
+                    }
+                })
+            }
+        }
+        return promise
     }
 }
