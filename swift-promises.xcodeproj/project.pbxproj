@@ -12,7 +12,7 @@
 		1135F12C2255323B00ADFC0A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1135F12A2255323B00ADFC0A /* LaunchScreen.storyboard */; };
 		1135F1372255330E00ADFC0A /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1135F1362255330E00ADFC0A /* Promise.swift */; };
 		117115402256871800DF5B20 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1171153F2256871800DF5B20 /* AppError.swift */; };
-		1171154A22590EB100DF5B20 /* Promise+Operations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1171154922590EB100DF5B20 /* Promise+Operations.swift */; };
+		11AA98A222D63FCE003E9BE6 /* URLSession+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AA98A122D63FCE003E9BE6 /* URLSession+Request.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,8 +23,8 @@
 		1135F12D2255323B00ADFC0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1135F1362255330E00ADFC0A /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		1171153F2256871800DF5B20 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
-		1171154922590EB100DF5B20 /* Promise+Operations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Promise+Operations.swift"; sourceTree = "<group>"; };
 		1171154B225916E200DF5B20 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		11AA98A122D63FCE003E9BE6 /* URLSession+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Request.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,7 +58,7 @@
 		1135F1202255323900ADFC0A /* swift-promises */ = {
 			isa = PBXGroup;
 			children = (
-				1135F133225532F100ADFC0A /* Utils */,
+				1135F133225532F100ADFC0A /* Sources */,
 				1135F1212255323900ADFC0A /* AppDelegate.swift */,
 				1135F1282255323B00ADFC0A /* Assets.xcassets */,
 				1135F12A2255323B00ADFC0A /* LaunchScreen.storyboard */,
@@ -67,14 +67,14 @@
 			path = "swift-promises";
 			sourceTree = "<group>";
 		};
-		1135F133225532F100ADFC0A /* Utils */ = {
+		1135F133225532F100ADFC0A /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				1171153F2256871800DF5B20 /* AppError.swift */,
 				1135F1362255330E00ADFC0A /* Promise.swift */,
-				1171154922590EB100DF5B20 /* Promise+Operations.swift */,
+				11AA98A122D63FCE003E9BE6 /* URLSession+Request.swift */,
 			);
-			path = Utils;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,8 +148,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				117115402256871800DF5B20 /* AppError.swift in Sources */,
-				1171154A22590EB100DF5B20 /* Promise+Operations.swift in Sources */,
 				1135F1222255323900ADFC0A /* AppDelegate.swift in Sources */,
+				11AA98A222D63FCE003E9BE6 /* URLSession+Request.swift in Sources */,
 				1135F1372255330E00ADFC0A /* Promise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
