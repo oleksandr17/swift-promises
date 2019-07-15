@@ -19,8 +19,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         do {
             URLSession.shared.request(url: URL(string: "https://www.google.com/"))
-                .observe { result in
-                    print(result)
+                .transform(modifier: { (data) -> String? in
+                    return String(data: data, encoding: .utf8)
+                })
+                .log()
+                .observe { (result) in
+                    print("End of API call")
                 }
         }
         

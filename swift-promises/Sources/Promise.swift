@@ -33,13 +33,13 @@ class Promise<ValueType>: Future<ValueType> {
 }
 
 extension Future {
-    func chain<NextValueType>(closure: @escaping (_ value: ValueType) -> Future<NextValueType>) -> Future<NextValueType> {
+    func chain<NextValueType>(factory: @escaping (_ value: ValueType) -> Future<NextValueType>) -> Future<NextValueType> {
         let promise = Promise<NextValueType>()
         
         observe { (result) in
             switch result {
             case let .success(value):
-                let nestedPromise = closure(value)
+                let nestedPromise = factory(value)
                 nestedPromise.observe(callback: { (nestedResult) in
                     switch nestedResult {
                     case let .success(nestedValue):
@@ -71,7 +71,7 @@ extension Future {
     }
     
     func transform<NextValueType>(modifier: @escaping (ValueType) throws -> NextValueType) -> Future<NextValueType> {
-        return chain(closure: { (value) -> Future<NextValueType> in
+        return chain(factory: { (value) -> Future<NextValueType> in
             let promise = Promise<NextValueType>()
             DispatchQueue.global(qos: .background).async {
                 do {
