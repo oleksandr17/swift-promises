@@ -13,6 +13,7 @@
 		1135F1372255330E00ADFC0A /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1135F1362255330E00ADFC0A /* Promise.swift */; };
 		11401D2322E19A8500443EC0 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11401D2222E19A8500443EC0 /* Product.swift */; };
 		11401D2522E19AA700443EC0 /* ProductLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11401D2422E19AA700443EC0 /* ProductLoader.swift */; };
+		11401D2722E1C2C700443EC0 /* combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11401D2622E1C2C700443EC0 /* combine.swift */; };
 		117115402256871800DF5B20 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1171153F2256871800DF5B20 /* AppError.swift */; };
 		11AA98A222D63FCE003E9BE6 /* URLSession+Request.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AA98A122D63FCE003E9BE6 /* URLSession+Request.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +27,7 @@
 		1135F1362255330E00ADFC0A /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 		11401D2222E19A8500443EC0 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		11401D2422E19AA700443EC0 /* ProductLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductLoader.swift; sourceTree = "<group>"; };
+		11401D2622E1C2C700443EC0 /* combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = combine.swift; sourceTree = "<group>"; };
 		1171153F2256871800DF5B20 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		1171154B225916E200DF5B20 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		11AA98A122D63FCE003E9BE6 /* URLSession+Request.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Request.swift"; sourceTree = "<group>"; };
@@ -79,6 +81,7 @@
 				11AA98A122D63FCE003E9BE6 /* URLSession+Request.swift */,
 				11401D2222E19A8500443EC0 /* Product.swift */,
 				11401D2422E19AA700443EC0 /* ProductLoader.swift */,
+				11401D2622E1C2C700443EC0 /* combine.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -159,6 +162,7 @@
 				11401D2522E19AA700443EC0 /* ProductLoader.swift in Sources */,
 				11401D2322E19A8500443EC0 /* Product.swift in Sources */,
 				11AA98A222D63FCE003E9BE6 /* URLSession+Request.swift in Sources */,
+				11401D2722E1C2C700443EC0 /* combine.swift in Sources */,
 				1135F1372255330E00ADFC0A /* Promise.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

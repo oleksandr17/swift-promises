@@ -43,6 +43,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 }
         }
         
+        do {
+            let sum = combine(value: 100) { $0 + 1 }
+            print("Sum: \(sum())")
+        }
+        
         return true
     }
 }
