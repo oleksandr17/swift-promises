@@ -4,6 +4,7 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     private let productLoader = ProductLoader()
+    private let productLoaderFunctional = ProductLoaderFunctional()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -29,10 +30,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         do {
-            productLoader.loadProduct()
+            productLoader.loadProducts()
                 .log()
                 .observe { (result) in
                     print("End of product call")
+                }
+            
+            productLoaderFunctional.loadProducts()
+                .log()
+                .observe { (result) in
+                    print("End of functional product call")
                 }
         }
         
