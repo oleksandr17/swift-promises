@@ -3,6 +3,7 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
+    private let productLoader = ProductLoader()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -22,9 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 .transform(modifier: { (data) -> String? in
                     return String(data: data, encoding: .utf8)
                 })
+                .observe { (result) in
+                    print("End of google call")
+                }
+        }
+        
+        do {
+            productLoader.loadProduct()
                 .log()
                 .observe { (result) in
-                    print("End of API call")
+                    print("End of product call")
                 }
         }
         
