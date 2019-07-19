@@ -63,7 +63,7 @@ extension Future {
         return chain { (value) -> Future<ValueType> in
             let promise = Promise<ValueType>()
             DispatchQueue.main.async {
-                print("Value: \(value)")
+                print(value)
                 promise.succeed(value: value)
             }
             return promise
@@ -77,6 +77,23 @@ extension Future {
                 do {
                     let newValue = try modifier(value)
                     promise.succeed(value: newValue)
+                } catch {
+                    promise.fail(error: error)
+                }
+            }
+            return promise
+        })
+    }
+}
+
+extension Future where ValueType == Data {
+    func decode<NextValueType: Decodable>(ofType type: NextValueType.Type) -> Future<NextValueType> {
+        return chain(factory: { (data) -> Future<NextValueType> in
+            let promise = Promise<NextValueType>()
+            DispatchQueue.global(qos: .background).async {
+                do {
+                    let value = try JSONDecoder().decode(NextValueType.self, from: data)
+                    promise.succeed(value: value)
                 } catch {
                     promise.fail(error: error)
                 }
