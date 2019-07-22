@@ -46,6 +46,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             let sum = combine(value: 100) { $0 + 1 }
             print("Sum: \(sum())")
+            
+            let log = combine(value: "Hello world") { print($0) }
+            log()
+        }
+        
+        do {
+            let chain1 = chain({ $0 * 100 }) { "\($0)" }
+            print(chain1(42))
         }
         
         return true
