@@ -1,20 +1,6 @@
 import Foundation
 
-private let url = URL(string: "http://www.mocky.io/v2/5d31711d33000062007ba193")
-
 class ProductLoader {
-    private let urlSession: URLSession
-    
-    init(urlSession: URLSession = .shared) {
-        self.urlSession = urlSession
-    }
-    
-    func loadProducts() -> Future<[Product]> {
-        return urlSession.request(url: url).decode(ofType: [Product].self)
-    }
-}
-
-class ProductLoaderFunctional {
     typealias Networking = (URL?) -> Future<Data>
     private let networking: Networking
     
@@ -22,7 +8,25 @@ class ProductLoaderFunctional {
         self.networking = networking
     }
     
+    func loadProduct(id: String) -> Future<Product> {
+        let networking = combine(value: URL.productUrl(id: id), closure: self.networking)
+        return networking().decode(ofType: Product.self)
+    }
+    
     func loadProducts() -> Future<[Product]> {
-        return networking(url).decode(ofType: [Product].self)
+        return networking(URL.productsUrl()).decode(ofType: [Product].self)
+    }
+}
+
+// MARK: -
+
+private extension URL {
+    static func productUrl(id: String) -> URL? {
+        // `id` is ignored, it's only for demo purpose
+        return URL(string: "http://www.mocky.io/v2/5d36a3d95600000ab33a5390")
+    }
+    
+    static func productsUrl() -> URL? {
+        return URL(string: "http://www.mocky.io/v2/5d31711d33000062007ba193")
     }
 }

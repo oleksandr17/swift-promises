@@ -4,7 +4,6 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     private let productLoader = ProductLoader()
-    private let productLoaderFunctional = ProductLoaderFunctional()
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -24,22 +23,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 .transform(modifier: { (data) -> String? in
                     return String(data: data, encoding: .utf8)
                 })
-                .observe { (result) in
+                .observe { _ in
                     print("End of google call")
                 }
         }
         
         do {
-            productLoader.loadProducts()
+            productLoader.loadProduct(id: "foo")
                 .log()
                 .observe { (result) in
                     print("End of product call")
                 }
             
-            productLoaderFunctional.loadProducts()
+            productLoader.loadProducts()
                 .log()
                 .observe { (result) in
-                    print("End of functional product call")
+                    print("End of products call")
                 }
         }
         
@@ -52,8 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         do {
-            let chain1 = chain({ $0 * 100 }) { "\($0)" }
-            print(chain1(42))
+            let foo = chain({ $0 * 100 }) { "\($0)" }
+            print(foo(42))
         }
         
         return true
