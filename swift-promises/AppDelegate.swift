@@ -29,10 +29,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         do {
-            productLoader.loadProduct(id: "foo")
+            productLoader.loadProduct1(id: "foo")
                 .log()
                 .observe { (result) in
-                    print("End of product call")
+                    print("End of product 1 call")
+                }
+            
+            productLoader.loadProduct1(id: "foo")
+                .log()
+                .observe { (result) in
+                    print("End of product 2 call")
                 }
             
             productLoader.loadProducts()

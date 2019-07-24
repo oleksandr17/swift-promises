@@ -8,9 +8,14 @@ class ProductLoader {
         self.networking = networking
     }
     
-    func loadProduct(id: String) -> Future<Product> {
+    func loadProduct1(id: String) -> Future<Product> {
         let networking = combine(value: URL.productUrl(id: id), closure: self.networking)
         return networking().decode(ofType: Product.self)
+    }
+    
+    func loadProduct2(id: String) -> Future<Product> {
+        let networking = chain(URL.productUrl, to: self.networking)
+        return networking(id).decode(ofType: Product.self)
     }
     
     func loadProducts() -> Future<[Product]> {
